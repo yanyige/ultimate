@@ -1,0 +1,47 @@
+.container {
+	@media screen and (min-width: 1200px){
+	    width: 1170px;
+	}
+	@media screen and (min-width: 992px){
+	    width: 970px;
+	}
+	margin: 0 auto;
+	padding: 0 15px;
+
+
+	
+	&:before,
+	&:after {
+	    content:"";
+	    display: table;
+	  }
+	&:after {
+	    clear:both;
+	    overflow: hidden;
+	}
+}
+
+.row{
+
+}
+
+.btn{
+	height: 30px;
+	width: 50px;
+	border-radius: 5px;
+	border: 1px solid transparent; 
+	padding: 6px 12px;
+	box-sizing: border-box;
+}
+
+.btn-success{
+	color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.btn-dangerous{
+	color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
