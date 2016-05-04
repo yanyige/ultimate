@@ -1,33 +1,3 @@
-.container {
-  margin: 0 auto;
-  padding: 0 15px; }
-  @media screen and (min-width: 1200px) {
-    .container {
-      width: 1170px; } }
-  @media screen and (min-width: 992px) {
-    .container {
-      width: 970px; } }
-  .container:before, .container:after {
-    content: "";
-    display: table; }
-  .container:after {
-    clear: both;
-    overflow: hidden; }
 
-.btn {
-  border-radius: 5px;
-  border: 1px solid transparent;
-  padding: 6px 12px;
-  box-sizing: border-box; }
-
-.btn-success {
-  color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c; }
-
-.btn-dangerous {
-  color: #fff;
-  background-color: #c9302c;
-  border-color: #ac2925; }
 
 /*# sourceMappingURL=ultimate.css.map */

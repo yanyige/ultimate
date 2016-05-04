@@ -8,6 +8,9 @@ app.set('views', './app/views/pages');
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
+if (app.get('env') === 'development') {
+  app.locals.pretty = true;
+}
 
 app.listen(port);
 
