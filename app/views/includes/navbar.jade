@@ -2,10 +2,49 @@
 	.container
 		.navbar-header
 			a(href='#').navbar-brand Yyg & Zsn's Home
-		form.navbar-form.navbar-right(role="login")
+		form.navbar-form.navbar-right(action='/user/login' method='post' role="login")
 			.form-group
-				input.form-control(name="username" type="text" placeholder="Username") 
+				input.form-control(name="user[username]" type="text" placeholder="Username") 
 			.form-group
-				input.form-control(name="password" type="text" placeholder="Password") 
+				input.form-control(name="user[password]" type="password" placeholder="Password") 
 			button(type="submit" class="btn btn-success") Sign in
-			button(type="submit" class="btn btn-danger") Sign up
+			button(type="button" class="btn btn-danger"  data-toggle="modal" data-target="#myModal") Sign up
+
+
+form.modal.fade#myModal(action="/user/signup" method="post" tabindex="-1" role="dialog" aria-lablledby="myModalLabel")
+	.modal-dialog(role="document")
+		.modal-content
+			.modal-header
+				button.close(type="button" data-dismiss="madal" aria-lable="Close")
+					span(aria-hidden="true") &times;
+				h4.modal-tittle#myModalLabel(style="display: inline-block; font-size:20px;") 欢迎注册
+				span(style="font-size: 12px; color: red; margin-left: 10px;") *
+				span 为必填项
+			.modal-body
+				.form-group
+					label(for="modal-usrname") 用户名
+					span(style="color: red;") *
+					span#usrnameInfo(style="visibility: hidden; font-size: 12px; color: #7e7e7e; float: right") 请输入4-20长度的英文字符
+					input#modal-usrname.form-control(name= "user[username]" type="text" placeholder="Username" onclick="insertUsrname()" onblur="checkUsrname()" onfocus="insertUsrname()")
+				.form-group
+					label(for="modal-passwd1") 密码 
+					span(style="color: red;") *
+					span#passwd1Info(style="visibility: hidden; font-size: 12px color: #7e7e7e; float: right;") 密码长度至少为7
+					input#modal-passwd1.form-control(name= "user[password]" type="password" placeholder="Password" onclick="insertPasswd1()" onblur="checkPasswd1()" onfocus="insertPasswd1()")
+				.form-group
+					label(for="modal-passwd2") 密码 
+					span(style="color: red;") *
+					span#passwd2Info(style="visibility: hidden; font-size: 12px color: #7e7e7e; float: right;") 密码必须保持相同
+					input#modal-passwd2.form-control(type="password" placeholder="Repeat Password" onclick="insertPasswd2()" onblur="checkPasswd2()" onfocus="insertPasswd2()")
+				.form-group
+					label(for="modal-email") 邮箱地址 
+					span#emailInfo(style="visibility: hidden; font-size: 12px color: #7e7e7e; float: right;") 请输入正确格式的邮箱地址
+					input#modal-email.form-control(name= "user[emailAddress]" type="text" placeholder="Email-Address" onclick="insertEmail()" onblur="checkEmail()" onfocus="insertEmail()")
+				.form-group
+					label(for="modal-nickName") 昵称 
+					span(style="color: red;") *
+					span#nickInfo(style="visibility: hidden; font-size: 12px color: #7e7e7e; float: right;") 昵称不能为空
+					input#modal-nickName.form-control(name= "user[nickName]" type="text" placeholder="NickName" onclick="insertNick()" onblur="checkNick()" onfocus="insertNick()")
+			.modal-footer
+				button.btn.btn-default(type="button" data-dismiss="modal") Close
+				input.btn.btn-default(type="button" onclick="checkAll()" value="提交")

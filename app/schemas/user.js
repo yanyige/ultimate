@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 
 
 var UserSchema = new mongoose.Schema({
-	username: String,
+	username: {
+		unique: true,
+		type: String
+	},
 	password: String,
 	meta: {
 		createAt: {
@@ -13,9 +16,13 @@ var UserSchema = new mongoose.Schema({
 			type: Date,
 			default: Date.now()
 		}
-	}
+	},
 	role: Number,
-	emailAdress: String
+	emailAddress: String,
+	nickName: {
+		unique: true,
+		type: String
+	}
 });
 
 UserSchema.pre('save', function(next){
@@ -27,17 +34,32 @@ UserSchema.pre('save', function(next){
 	next();
 });
 
+UserSchema.methods = {
+	comparePassword: function(_password, cb){
+		if(_password == this.password){
+			return cb(false, true);
+		}else{
+			return cb(false, false);
+		}
+	}
+}
+
 UserSchema.statics = {
 	fetch: function(cb) {
 		return this
 		.find({})
 		.sort('meta.updateAt')
 		.exec(cb);
-	}
+	},
 	findById: function(cb) {
 		return this
 		.findOne({_id: id})
 		.exec(cb);
+	},
+	findByUsername: function(cb) {
+		return this
+		.findOne({_username: username})
+		.exex(cb);
 	}
 }
 
