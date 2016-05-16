@@ -34,6 +34,11 @@ app.listen(port);
 //首页index路由
 app.get('/', function(req, res){
 	console.log('user in session: '+ req.session.user);
+	var _user = req.session.user;
+	if(_user){
+		app.locals.user = _user;
+	}
+
 	res.render('index', {
 		title: '首页',
 		
@@ -77,11 +82,18 @@ app.post('/user/login', function(req, res){
 				return res.redirect('/');
 			}else{
 				console.log('Password not matched');
+				return res.redirect('/');	
 			}
 		});
 
 
 	});
+});
+
+app.get('/logout', function(req, res){
+	delete req.session.user;
+	delete app.locals.user;
+	res.redirect('/');
 });
 
 

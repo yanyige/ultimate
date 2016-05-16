@@ -2,13 +2,17 @@
 	.container
 		.navbar-header
 			a(href='#').navbar-brand Yyg & Zsn's Home
-		form.navbar-form.navbar-right(action='/user/login' method='post' role="login")
-			.form-group
-				input.form-control(name="user[username]" type="text" placeholder="Username") 
-			.form-group
-				input.form-control(name="user[password]" type="password" placeholder="Password") 
-			button(type="submit" class="btn btn-success") Sign in
-			button(type="button" class="btn btn-danger"  data-toggle="modal" data-target="#myModal") Sign up
+		if user
+			p.navbar-text.navbar-right 欢迎您,#{user.nickName}
+				a(class="navbar-link" style="margin-left: 15px" href="/logout") 登出
+		else
+			form.navbar-form.navbar-right(action='/user/login' method='post' role="login")
+				.form-group
+					input.form-control(name="user[username]" type="text" placeholder="Username") 
+				.form-group
+					input.form-control(name="user[password]" type="password" placeholder="Password") 
+				button(type="submit" class="btn btn-success") Sign in
+				button(type="button" class="btn btn-danger"  data-toggle="modal" data-target="#myModal") Sign up
 
 
 form.modal.fade#myModal(action="/user/signup" method="post" tabindex="-1" role="dialog" aria-lablledby="myModalLabel")
