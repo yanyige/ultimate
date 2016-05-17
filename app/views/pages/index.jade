@@ -1,6 +1,14 @@
 extends ../layout
+block head
+	link(href="/css/index.css" rel="stylesheet" type="text/css")
+	script(src="/js/index.js" type="text/javascript")
 block content
 	article
+		.myJumbotron
+			h1.motto Less is more
+			p.welcome 欢迎来到我的个人网站,我是yyg~
+			h2.welcome-right 在这里，你将看到
+			p.intro 我的个人博客，我的资料，我做过的小玩意
 		section.section1
 		.section1Img
 		section.section2

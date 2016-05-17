@@ -1,0 +1,46 @@
+.myJumbotron {
+  height: 300px;
+  background-image: url("/images/jumbotron.jpg");
+  height: 300px;
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  overflow: hidden; }
+
+.motto {
+  margin-top: 100px;
+  color: white;
+  position: absolute; }
+
+.welcome {
+  color: white;
+  margin-top: 182px;
+  position: absolute; }
+
+.welcome-right {
+  color: white;
+  margin-top: 122px;
+  position: absolute; }
+
+.intro {
+  color: white;
+  margin-top: 182px;
+  position: absolute;
+  right: 15%; }
+
+.section1 {
+  background-color: #4A7FFA;
+  height: 300px; }
+
+.section1Img {
+  background-image: url("/images/section1.jpg");
+  width: 100%;
+  height: 600px;
+  background-size: cover;
+  background-attachment: fixed; }
+
+.section2 {
+  background-color: #4BF181;
+  height: 300px; }
+
+/*# sourceMappingURL=index.css.map */
