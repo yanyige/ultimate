@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mongoStore = require('connect-mongo')(session);
+var logger = require('morgan');
 
 mongoose.connect('mongodb://localhost/ultimate')
 
@@ -25,19 +26,31 @@ app.use(session({
 	})
 }));
 
+//登陆处理程序
 if (app.get('env') === 'development') {
-  app.locals.pretty = true;
+	app.use(logger(':method :url :status'));
+	app.locals.pretty = true;
+	mongoose.set('debug', true);
+	app.set('showStackError', true);
 }
 
 app.listen(port);
 
-//首页index路由
-app.get('/', function(req, res){
-	console.log('user in session: '+ req.session.user);
+
+//pre处理
+app.use(function(req, res, next){
 	var _user = req.session.user;
+	console.log('user in session: '+ req.session.user);
 	if(_user){
 		app.locals.user = _user;
 	}
+
+	return next();
+
+});
+
+//首页index路由
+app.get('/', function(req, res){
 
 	res.render('index', {
 		title: '首页',
@@ -55,6 +68,7 @@ app.post('/user/signup', function(req, res){
 	});
 
 });
+
 
 
 //页面登陆路由
