@@ -2,7 +2,6 @@ var express = require('express');
 var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var path = require('path');
-var User = require('./app/models/user');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -34,81 +33,12 @@ if (app.get('env') === 'development') {
 	app.set('showStackError', true);
 }
 
+require('./config/routes')(app);
+
 app.listen(port);
 
 
-//pre处理
-app.use(function(req, res, next){
-	var _user = req.session.user;
-	console.log('user in session: '+ req.session.user);
-	if(_user){
-		app.locals.user = _user;
-	}
 
-	return next();
-
-});
-
-//首页index路由
-app.get('/', function(req, res){
-
-	res.render('index', {
-		title: '首页',
-		
-	})
-});
-
-//注册页面路由
-app.post('/user/signup', function(req, res){
-	var _user = req.body.user;
-	var user = new User(_user);
-	user.save(function(err, user){
-		if(err) console.log(err);
-		else console.log(user);
-	});
-
-});
-
-
-
-//页面登陆路由
-app.post('/user/login', function(req, res){
-	var _user = req.body.user;
-	// console.log(_user);
-	var username = _user.username;
-	var password = _user.password;
-	// console.log("username="+username);
-	User.findOne({username: username}, function(err, user){
-		if(!err){
-			// console.log(err);
-		}
-		if(!user){
-			return res.redirect('/');
-		}
-
-		user.comparePassword(password, function(err, isMatch){
-			if(err){
-				console.log(err);
-			}
-			if(isMatch){
-				console.log('Success log in');
-				req.session.user = user;
-				return res.redirect('/');
-			}else{
-				console.log('Password not matched');
-				return res.redirect('/');	
-			}
-		});
-
-
-	});
-});
-
-app.get('/logout', function(req, res){
-	delete req.session.user;
-	delete app.locals.user;
-	res.redirect('/');
-});
 
 
 console.log('started at '+ port);
