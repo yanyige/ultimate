@@ -37,10 +37,37 @@ $sectionHeight: 300px;
 
 //section1
 .section1{
-	background-color: #4A7FFA;
+	background-color: #e9f0f5;
 	height: $sectionHeight;
 }
 
+//timeLine
+.myTimeLine{
+	&::before{
+		content: '';
+		height: 4px;
+		background-color: #d7e4ed;
+		position: absolute;
+		margin-top: 148px;
+		width: inherit;
+		margin-left: -15px;
+	}
+	height: 100%;
+	.myTimeLine-item{
+		.myTimeLine-item-img{
+			border: 5px solid white;
+			height: 30px;
+			width: 30px;
+			background-color: #5DEEAF;
+			border-radius: 30px;
+			position: absolute;
+			margin-top: 135px;
+		}
+	}
+	.myTimeLine-item:nth-child(n+2){
+		margin-left: 50px;
+	}
+}
 
 .section1Img{
 	background-image: url('/images/section1.jpg'); 

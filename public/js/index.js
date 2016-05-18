@@ -22,14 +22,12 @@ $(document).ready(function(){
 	$.start();
 
 	jQuery.imqq = function(){
-		with(arguments){
-			var ele = arguments;
-			$(window).scroll(function(){
-				var temp = (ele[0].offset().top - $(window).scrollTop()) * 0.03;
-		        var pos = "50% "+temp+"px";
-		        $(".section1Img").css({"background-position":pos});
-			});
-		}
+		var ele = arguments;
+		$(window).scroll(function(){
+			var temp = (ele[0].offset().top - $(window).scrollTop()) * 0.03;
+	        var pos = "50% "+temp+"px";
+	        $(".section1Img").css({"background-position":pos});
+		});
 	}
 	$.imqq($(".section1"));
 
