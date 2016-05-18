@@ -37,9 +37,9 @@ UserSchema.pre('save', function(next){
 UserSchema.methods = {
 	comparePassword: function(_password, cb){
 		if(_password == this.password){
-			return cb(false, true);
+			cb(false, true);
 		}else{
-			return cb(false, false);
+			cb(false, false);
 		}
 	}
 }

@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-
+	//首页文字效果
 	jQuery.start = function(){
 		var motto = $(".motto");
 		var welcome = $(".welcome");
@@ -21,6 +21,7 @@ $(document).ready(function(){
 	}
 	$.start();
 
+	//图片跟随滚动 attachment
 	jQuery.imqq = function(){
 		var ele = arguments;
 		$(window).scroll(function(){
@@ -31,4 +32,40 @@ $(document).ready(function(){
 	}
 	$.imqq($(".section1"));
 
+	//时间轴timeline
+	var timeItem = [
+		{
+			content: '测试',
+			time: '2016年5月18日20:24:40'
+		},
+		{
+			content: '测试',
+			time: '2016年5月18日20:24:40'
+		},
+		{
+			content: '测试',
+			time: '2016年5月18日20:24:40'
+		},
+		{
+			content: '测试',
+			time: '2016年5月18日20:24:40'
+		},
+		{
+			content: '测试',
+			time: '2016年5月18日20:24:40'
+		}
+	]
+	jQuery.timeLine = function(){
+		var marginLeft = ($(".myTimeLine").width() - 30) / (timeItem.length - 1);
+		$.each(timeItem, function(index, item){
+			var myTimeLineItem = $("<div class='myTimeLine-item'>").appendTo($(".myTimeLine"));
+			var myTimeLineItemImg = $("<div class='myTimeLine-item-img'>").appendTo(myTimeLineItem);
+			var myTimeLineItemImg = $("<div class='myTimeLine-item-content'>").appendTo(myTimeLineItem);
+			myTimeLineItem.css({'margin-left': marginLeft * index});
+			// .myTimeLine-item.clearfix
+			// 		.myTimeLine-item-img
+			// 		.myTimeLine-item-content
+		});
+	}
+	$.timeLine();
 });

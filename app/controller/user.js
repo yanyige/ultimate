@@ -30,6 +30,7 @@ exports.login = function(req, res){
 			if(err){
 				console.log(err);
 			}
+			console.log('isMatch='+isMatch);
 			if(isMatch){
 				console.log('Success log in');
 				req.session.user = user;
