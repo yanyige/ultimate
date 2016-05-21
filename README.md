@@ -20,3 +20,9 @@
 	>>配置入口文件。
 	>>分离mvc层。
 	>>了解express4.x 中使用logger中间件相关使用方法。
+
+2016.5.22
+	>>主页的设计。
+	>>transition，animation，滚动触发animation动画。
+	>>on函数的使用，传递参数，使用回调函数。
+	>>学习svg图像相关知识，制作tooltip的两种方法（倒三角的实现）。
