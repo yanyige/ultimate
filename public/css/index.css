@@ -33,14 +33,23 @@
   height: 300px; }
 
 .myTimeLine {
+  position: relative;
   height: 100%; }
+  .myTimeLine.animation::before {
+    animation: timeLineAnimation 5s forwards; }
+@keyframes timeLineAnimation {
+  from {
+    width: 0px; }
+  to {
+    width: inherit; } }
   .myTimeLine::before {
     content: '';
     height: 4px;
     background-color: #d7e4ed;
     position: absolute;
     margin-top: 148px;
-    width: inherit;
+    width: 0px;
+    transition: width 2s;
     margin-left: -15px; }
   .myTimeLine .myTimeLine-item .myTimeLine-item-img {
     border: 5px solid white;
@@ -49,9 +58,13 @@
     background-color: #5DEEAF;
     border-radius: 30px;
     position: absolute;
-    margin-top: 135px; }
-  .myTimeLine .myTimeLine-item:nth-child(n+2) {
-    margin-left: 50px; }
+    top: 135px;
+    transition: width 2s ease, height 2s ease, margin-left 2s ease, margin-top 2s ease; }
+    .myTimeLine .myTimeLine-item .myTimeLine-item-img:hover {
+      width: 50px;
+      height: 50px;
+      margin-left: -10px;
+      margin-top: -10px; }
 
 .section1Img {
   background-image: url("/images/section1.jpg");

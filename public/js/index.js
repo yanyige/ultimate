@@ -56,7 +56,10 @@ $(document).ready(function(){
 		}
 	]
 	jQuery.timeLine = function(){
-		var marginLeft = ($(".myTimeLine").width() - 30) / (timeItem.length - 1);
+		var animateFlag = false;
+		var myTimeLine = $(".myTimeLine");
+		var timeLineWidth = myTimeLine.width();
+		var marginLeft = (timeLineWidth - 30) / (timeItem.length - 1);
 		$.each(timeItem, function(index, item){
 			var myTimeLineItem = $("<div class='myTimeLine-item'>").appendTo($(".myTimeLine"));
 			var myTimeLineItemImg = $("<div class='myTimeLine-item-img'>").appendTo(myTimeLineItem);
@@ -66,6 +69,44 @@ $(document).ready(function(){
 			// 		.myTimeLine-item-img
 			// 		.myTimeLine-item-content
 		});
+		myTimeLine.children().hide();
+		// $(window).on("scroll", scrollFunction(myTimeLine, test));
+		$(window).on("scroll",{dom:".myJumbotron",
+			callBack1: function (){
+				myTimeLine.addClass(myTimeLine.data('animation'));
+			},
+			callBack2: function (){
+				myTimeLine.removeClass(myTimeLine.data('animation'));
+			},
+			callBack3: function(){
+				var delayTime = (5 / myTimeLine.children().length) * 1000;
+				var temp = delayTime;
+				console.log(delayTime);
+				myTimeLine.children().each(function(index, item){
+					$(item).fadeIn(temp);
+					temp += delayTime;
+				});
+			},
+			callBack4: function(){
+				myTimeLine.children().hide();
+			}
+			}, scrollFunction);
+	
+
 	}
 	$.timeLine();
+
+
 });
+
+function scrollFunction(event){
+	var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+	var domTop = $(event.data.dom).offset().top;
+	if(scrollTop > domTop){
+		event.data.callBack1();
+		event.data.callBack3();
+	}else{
+		event.data.callBack2();
+		event.data.callBack4();
+	}
+}
