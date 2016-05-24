@@ -26,3 +26,7 @@
 	>>transition，animation，滚动触发animation动画。
 	>>on函数的使用，传递参数，使用回调函数。
 	>>学习svg图像相关知识，制作tooltip的两种方法（倒三角的实现）。
+	
+2016.5.24
+	>>TimeLine完成。
+	>>引入svg图片，使用ajax。
