@@ -30,3 +30,4 @@
 2016.5.24
 	>>TimeLine完成。
 	>>引入svg图片，使用ajax。
+	>>在一个div中触发多个div的动画transition。
