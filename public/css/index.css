@@ -47,7 +47,7 @@
     height: 4px;
     background-color: #d7e4ed;
     position: absolute;
-    margin-top: 148px;
+    margin-top: 185.4px;
     width: 0px;
     transition: width 2s;
     margin-left: -15px; }
@@ -58,13 +58,45 @@
     background-color: #5DEEAF;
     border-radius: 30px;
     position: absolute;
-    top: 135px;
+    top: 172.4px;
     transition: width 2s ease, height 2s ease, margin-left 2s ease, margin-top 2s ease; }
     .myTimeLine .myTimeLine-item .myTimeLine-item-img:hover {
       width: 50px;
       height: 50px;
       margin-left: -10px;
       margin-top: -10px; }
+      .myTimeLine .myTimeLine-item .myTimeLine-item-img:hover .myTimeLine-item-content svg {
+        opacity: 1; }
+        .myTimeLine .myTimeLine-item .myTimeLine-item-img:hover .myTimeLine-item-content svg path, .myTimeLine .myTimeLine-item .myTimeLine-item-img:hover .myTimeLine-item-content svg polygon {
+          stroke-dashoffset: 0; }
+      .myTimeLine .myTimeLine-item .myTimeLine-item-img:hover .myTimeLine-item-content p {
+        opacity: 1; }
+    .myTimeLine .myTimeLine-item .myTimeLine-item-img .myTimeLine-item-content {
+      position: absolute; }
+      .myTimeLine .myTimeLine-item .myTimeLine-item-img .myTimeLine-item-content svg {
+        opacity: 0;
+        transition: opacity 2s ease; }
+        .myTimeLine .myTimeLine-item .myTimeLine-item-img .myTimeLine-item-content svg path, .myTimeLine .myTimeLine-item .myTimeLine-item-img .myTimeLine-item-content svg polygon {
+          fill: white;
+          stroke: orange;
+          stroke-width: 5px;
+          stroke-dasharray: 1500;
+          stroke-dashoffset: -1500;
+          transition: stroke-dashoffset 3s ease; }
+      .myTimeLine .myTimeLine-item .myTimeLine-item-img .myTimeLine-item-content p {
+        opacity: 0;
+        transition: opacity 2s ease; }
+    .myTimeLine .myTimeLine-item .myTimeLine-item-img .pWrapper {
+      height: 100px;
+      width: 200px;
+      position: relative;
+      margin-top: -100px;
+      padding: 25px; }
+    .myTimeLine .myTimeLine-item .myTimeLine-item-img .timeWrapper {
+      position: relative;
+      margin-top: 80px;
+      margin-left: 30px;
+      padding: 25px; }
 
 .section1Img {
   background-image: url("/images/section1.jpg");

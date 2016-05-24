@@ -35,24 +35,20 @@ $(document).ready(function(){
 	//时间轴timeline
 	var timeItem = [
 		{
-			content: '测试',
-			time: '2016年5月18日20:24:40'
+			content: '1993年11月13日的这天我出生啦~~~',
+			time: '1993年11月13日'
 		},
 		{
-			content: '测试',
-			time: '2016年5月18日20:24:40'
+			content: '6岁上小学，湖北省荆门市实验小学。',
+			time: '1999年9月01日'
 		},
 		{
-			content: '测试',
-			time: '2016年5月18日20:24:40'
+			content: '2011年9月考取东北师范大学。',
+			time: '2011年9月1日'
 		},
 		{
-			content: '测试',
-			time: '2016年5月18日20:24:40'
-		},
-		{
-			content: '测试',
-			time: '2016年5月18日20:24:40'
+			content: '2016.5.18日开始制作我的个人网站~',
+			time: '2016年5月18日'
 		}
 	]
 	jQuery.timeLine = function(){
@@ -61,16 +57,19 @@ $(document).ready(function(){
 		var timeLineWidth = myTimeLine.width();
 		var marginLeft = (timeLineWidth - 30) / (timeItem.length - 1);
 		$.each(timeItem, function(index, item){
-			var myTimeLineItem = $("<div class='myTimeLine-item'>").appendTo($(".myTimeLine"));
-			var myTimeLineItemImg = $("<div class='myTimeLine-item-img'>").appendTo(myTimeLineItem);
-			var myTimeLineItemImg = $("<div class='myTimeLine-item-content'>").appendTo(myTimeLineItem);
+			var myTimeLineItem = $("<div class='myTimeLine-item clearfix'>").appendTo($(".myTimeLine"));
+			var myTimeLineItemImg = $("<div class='myTimeLine-item-img clearfix'>").appendTo(myTimeLineItem);
+			var myTimeLineItemContent = $("<div class='myTimeLine-item-content clearfix'>").appendTo(myTimeLineItemImg);
+			var svg = $("<svg data-src='../images/bubble.svg' width='200' height='100'>").appendTo(myTimeLineItemContent);
 			myTimeLineItem.css({'margin-left': marginLeft * index});
-			// .myTimeLine-item.clearfix
-			// 		.myTimeLine-item-img
-			// 		.myTimeLine-item-content
+			myTimeLineItemContent.css({'left': '-90px','top': '-130px'});
+			var pWrapper = $("<div class='pWrapper'></div>").appendTo(myTimeLineItemContent);
+			var p = $('<p>'+item.content+'</p>').appendTo(pWrapper);
+			var timeWrapper = $("<div class='timeWrapper'></div>").appendTo(myTimeLineItemContent);
+			var time = $('<p>'+item.time+'</p>').appendTo(timeWrapper);
 		});
 		myTimeLine.children().hide();
-		// $(window).on("scroll", scrollFunction(myTimeLine, test));
+		// 事件绑定
 		$(window).on("scroll",{dom:".myJumbotron",
 			callBack1: function (){
 				myTimeLine.addClass(myTimeLine.data('animation'));
@@ -81,7 +80,6 @@ $(document).ready(function(){
 			callBack3: function(){
 				var delayTime = (5 / myTimeLine.children().length) * 1000;
 				var temp = delayTime;
-				console.log(delayTime);
 				myTimeLine.children().each(function(index, item){
 					$(item).fadeIn(temp);
 					temp += delayTime;
@@ -92,7 +90,24 @@ $(document).ready(function(){
 			}
 			}, scrollFunction);
 	
-
+		//Ajax加载图片
+		(function(){
+			$("svg[data-src]").each(function(index, item){
+				var src = $(item).data("src");
+				$.ajax({
+					url: src,
+					dataType: 'xml',
+					success: function(content){
+						var doc = content.documentElement;
+						$(doc).attr({
+							width: $(item).attr('width'),
+							height: $(item).attr('height')
+						});
+						$(item).after(doc).remove();
+					}
+				});
+			});
+		})();
 	}
 	$.timeLine();
 

@@ -61,7 +61,7 @@ $sectionHeight: 300px;
 		height: 4px;
 		background-color: #d7e4ed;
 		position: absolute;
-		margin-top: 148px;
+		margin-top: $sectionHeight*0.618;
 		width: 0px;
 		transition: width 2s;
 		margin-left: -15px;
@@ -75,16 +75,61 @@ $sectionHeight: 300px;
 			background-color: #5DEEAF;
 			border-radius: 30px;
 			position: absolute;
-			top: 135px;
+			top: ($sectionHeight*0.618)-13;
 			transition: width 2s ease,
 						height 2s ease,
 						margin-left 2s ease,
 						margin-top 2s ease;
+					
 			&:hover{
 				width: 50px;
 				height: 50px;
 				margin-left: -10px;
 				margin-top: -10px;
+				& .myTimeLine-item-content{
+					svg {
+						opacity: 1;
+						path,polygon{
+							stroke-dashoffset: 0;
+						}
+					}
+					p{
+						opacity: 1;
+					}
+				}
+			}
+			& .myTimeLine-item-content{
+				position: absolute;
+				svg{
+					opacity: 0;
+					path,polygon{
+						fill: white;
+						stroke: orange;
+						stroke-width: 5px;
+						stroke-dasharray: 1500;
+          				stroke-dashoffset: -1500;
+          				transition: stroke-dashoffset 3s ease;
+					}
+					transition: opacity 2s ease;
+								
+				}
+				p{
+					opacity: 0;
+					transition: opacity 2s ease;
+				}
+			}
+			.pWrapper{
+				height: 100px;
+				width: 200px;
+				position: relative;
+				margin-top: -100px;
+				padding: 25px;
+			}
+			.timeWrapper{
+				position: relative;
+				margin-top: 80px;
+				margin-left: 30px;
+				padding: 25px;
 			}
 		}
 	}

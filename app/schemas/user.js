@@ -17,7 +17,14 @@ var UserSchema = new mongoose.Schema({
 			default: Date.now()
 		}
 	},
-	role: Number,
+	role: {
+		defalult: 0,
+		type: Number
+	},
+	//0 normal用户
+	//1 认证用户
+	//2-10
+	//11+ administrator
 	emailAddress: String,
 	nickName: {
 		unique: true,
