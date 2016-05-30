@@ -2,24 +2,19 @@ extends ../layout
 block head
 	link(href="/css/index.css" rel="stylesheet" type="text/css")
 	script(src="/js/index.js" type="text/javascript")
+	title #{title}
 block content
 	article
 		.myJumbotron
 			h1.motto Less is more
 			p.welcome 欢迎来到我的个人网站,我是yyg~
 			h2.welcome-right 在这里，你将看到
-			p.intro 我的个人博客，我的资料，我做过的小玩意
+			p.intro 
+				|我的
+				a(href="/blog") 个人博客
+				|，我的资料，我做过的小玩意
 		section.section1
 			.myTimeLine.container(data-animation="animation")
-				//- .myTimeLine-item.clearfix
-				//- 	.myTimeLine-item-img
-				//- 	.myTimeLine-item-content
-				//- .myTimeLine-item.clearfix
-				//- 	.myTimeLine-item-img
-				//- 	.myTimeLine-item-content
-				//- .myTimeLine-item.clearfix
-				//- 	.myTimeLine-item-img
-				//- 	.myTimeLine-item-content
 				//- .myTimeLine-item.clearfix
 				//- 	.myTimeLine-item-img
 				//- 	.myTimeLine-item-content
@@ -30,6 +25,3 @@ block content
 		.section3Img
 		section.section4
 		.section4Img
-		
-		
-

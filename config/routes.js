@@ -1,5 +1,6 @@
 var User = require('../app/controller/user');
 var Index = require('../app/controller/index');
+var Blog = require('../app/controller/blog')
 
 module.exports = function(app){
 
@@ -16,6 +17,7 @@ module.exports = function(app){
 	//首页index路由
 	app.get('/', Index.index);
 
+
 	//注册页面路由
 	app.post('/user/signup', User.signup);
 
@@ -24,4 +26,8 @@ module.exports = function(app){
 
 	//页面登出路由
 	app.get('/logout', User.logout);
+
+
+	//博客登陆路由
+	app.get('/blog', Blog.index);
 }
