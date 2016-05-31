@@ -30,4 +30,8 @@ module.exports = function(app){
 
 	//博客登陆路由
 	app.get('/blog', Blog.index);
+	//博客列表路由
+	app.get('/blog/guest/list', Blog.list);
+	//博客操作路由
+	app.get('/blog/admin/new', Blog.new);
 }

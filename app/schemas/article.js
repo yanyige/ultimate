@@ -25,6 +25,17 @@ var ArticleSchema = new mongoose.Schema({
 		type: Number,
 		default: 0
 	},
+	onTop: {
+		type: Boolean,
+		default: false
+	},
+	onFocus: {
+		type: Boolean,
+		default: false
+	},
+	category: {
+		type: String,
+	}
 });
 
 ArticleSchema.pre('save', function(req, res, next){
