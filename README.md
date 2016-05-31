@@ -31,3 +31,13 @@
 	>>TimeLine完成。
 	>>引入svg图片，使用ajax。
 	>>在一个div中触发多个div的动画transition。
+	
+2016.5.29
+	>>博客引用完成。
+	>>建立blog的schema。
+	>>博客初步定为两个板块。
+	
+2016.6.01
+	>>select复习。
+	>>使用富文本编辑器ueditor。
+	>>git操作（回到add操作之前，使用reset head）。
