@@ -9,7 +9,7 @@ module.exports = function(app){
 		var _user = req.session.user;
 		console.log('user in session: '+ req.session.user);
 		app.locals.user = _user;
-
+		app.locals.moment = require('moment');
 		next();
 
 	});
@@ -31,7 +31,10 @@ module.exports = function(app){
 	//博客登陆路由
 	app.get('/blog', Blog.index);
 	//博客列表路由
-	app.get('/blog/guest/list', Blog.list);
+	app.get('/guest/blog/list', Blog.list);
 	//博客操作路由
-	app.get('/blog/admin/new', Blog.new);
+	app.get('/admin/blog/new', User.userLoginRequired, User.userAdminRequired, Blog.new);
+	//新建博客
+	app.post('/blog/new', Blog.save);
+	app.get('/guest/blog/:id', Blog.detail);
 }

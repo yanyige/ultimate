@@ -38,7 +38,7 @@ var ArticleSchema = new mongoose.Schema({
 	}
 });
 
-ArticleSchema.pre('save', function(req, res, next){
+ArticleSchema.pre('save', function(next){
 	if(this.isNew){
 		this.meta.createAt = this.meta.updateAt = Date.now();
 	}else{
@@ -46,6 +46,8 @@ ArticleSchema.pre('save', function(req, res, next){
 	}
 	next();
 });
+
+// var ObjectId = mongoose.Schema.Types.ObjectId;
 
 ArticleSchema.statics = {
 	fetch: function(cb){

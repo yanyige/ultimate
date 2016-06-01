@@ -2,4 +2,21 @@ extends ../layout
 block head
 	title #{title}
 block content
-	
+	.container
+		.row
+			table.table.table-hover.table-bordered
+				thead
+					tr
+						th 标题
+						th 作者
+						th 类别
+						th 录入时间
+						th 修改时间
+				tbody
+					each item in article
+						tr(class="item-id-#{item._id}")
+							td: a(href='/guest/blog/:#{item._id}') #{item.title}
+							td #{item.author}
+							td #{item.category}
+							td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
+							td #{moment(item.meta.createAt).format('MM/DD/YYYY')}

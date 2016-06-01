@@ -6,33 +6,37 @@ block head
 	script(type="text/javascript" charset="utf-8" src="/libs/ueditor/lang/zh-cn/zh-cn.js")
 block content
 	.container
-		form.form-horizontal(action="/blog/admin/new" method="post")
+		form.form-horizontal(action="/blog/new" method="post" enctype="multipart/form-data")
+			if article._id
+				input(type="hidden" value=article._id name='article[_id]')
 			.form-group
 				label.col-md-3.col-md-offset-3.control-label(for="title") 标题
 				.col-md-3
-					input.col-md-3.form-control(type="text" name='title' id="title" placeholder="title")
+					input.col-md-3.form-control(type="text" name='article[title]' id="title" placeholder="title")
 			.form-group
 				label.col-md-3.col-md-offset-3.control-label(for="author") 作者
 				.col-md-3
-					input.col-md-3.form-control(type="text" name='title' id="author" placeholder="author")
+					input.col-md-3.form-control(type="text" name='article[author]' id="author" placeholder="author")
 			.form-group
 				label.col-md-3.col-md-offset-3.control-label(for="category") 类别
 				.col-md-3
-					input.col-md-3.form-control(type="text" name='title' id="category" placeholder="category")
+					input.col-md-3.form-control(type="text" name='article[category]' id="category" placeholder="category")
 			.form-group
 				label.col-md-3.col-md-offset-3.control-label(for="onTop") 是否置顶
 				.col-md-3
-					select#onTop.form-control(name="onTop")
+					select#onTop.form-control(name="article[onTop]")
 						option(value="1") 是
 						option(value="0") 否
 			.form-group
 				label.col-md-3.col-md-offset-3.control-label(for="onFocus") 是否标红
 				.col-md-3
-					select#onFocus.form-control(name="onFocus")
+					select#onFocus.form-control(name="article[onFocus]")
 						option(value="1") 是
 						option(value="0") 否
 			.form-group
 				.col-md-6.col-md-offset-3
-					script#editor(type="text/plain")
+					script#editor(type="text/plain" name="article[content]")
+			.form-group
+				input.btn.btn-default(type="submit")
 	script(type="text/javascript").
 		var ue = UE.getEditor('editor');

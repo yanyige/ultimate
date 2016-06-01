@@ -52,3 +52,17 @@ exports.logout = function(req, res){
 	res.redirect('/');
 }
 
+//midware for user
+exports.userLoginRequired = function(req, res, next){
+	if(!req.session.user){
+		res.redirect('/');
+	}
+	next();
+}
+
+exports.userAdminRequired = function(req, res, next){
+	if(req.session.user.role < 10){
+		res.redirect('/');
+	}
+	next();
+}
