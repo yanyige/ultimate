@@ -15,7 +15,7 @@ block content
 				tbody
 					each item in article
 						tr(class="item-id-#{item._id}")
-							td: a(href='/guest/blog/:#{item._id}') #{item.title}
+							td: a(href='/guest/blog/#{item._id}') #{item.title}
 							td #{item.author}
 							td #{item.category}
 							td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}

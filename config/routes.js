@@ -30,11 +30,11 @@ module.exports = function(app){
 
 	//博客登陆路由
 	app.get('/blog', Blog.index);
-	//博客列表路由
 	app.get('/guest/blog/list', Blog.list);
-	//博客操作路由
+	app.get('/guest/blog/list/:categoryId', Blog.listById); //此处id为类别id
 	app.get('/admin/blog/new', User.userLoginRequired, User.userAdminRequired, Blog.new);
-	//新建博客
-	app.post('/blog/new', Blog.save);
 	app.get('/guest/blog/:id', Blog.detail);
+	app.get('/admin/blog', Blog.index);
+	app.post('/blog/new', Blog.save);
+	// app.post('/blog/category', Blog.showCategory);
 }

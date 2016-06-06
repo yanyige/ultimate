@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
 
-var ArticleSchema = new mongoose.Schema({
+var ArticleSchema = new Schema({
 	title: {
 		type: String,
 		unique: true
@@ -34,7 +36,8 @@ var ArticleSchema = new mongoose.Schema({
 		default: false
 	},
 	category: {
-		type: String,
+		type: ObjectId,
+		ref: 'Category'
 	}
 });
 
@@ -59,6 +62,11 @@ ArticleSchema.statics = {
 	findById: function(id, cb){
 		return this
 		.findOne({_id: id})
+		.exec(cb);
+	},
+	findByCategory: function(category, cb){
+		return this
+		.find({category: category})
 		.exec(cb);
 	}
 }

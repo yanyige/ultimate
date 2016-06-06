@@ -66,7 +66,7 @@ UserSchema.statics = {
 	findByUsername: function(cb) {
 		return this
 		.findOne({_username: username})
-		.exex(cb);
+		.exec(cb);
 	}
 }
 
