@@ -1,6 +1,7 @@
 var User = require('../app/controller/user');
 var Index = require('../app/controller/index');
-var Blog = require('../app/controller/blog')
+var Blog = require('../app/controller/blog');
+var Category = require('../app/controller/category');
 
 module.exports = function(app){
 
@@ -36,5 +37,5 @@ module.exports = function(app){
 	app.get('/guest/blog/:id', Blog.detail);
 	app.get('/admin/blog', Blog.index);
 	app.post('/blog/new', Blog.save);
-	// app.post('/blog/category', Blog.showCategory);
+	app.post('/category/new', Category.save);
 }

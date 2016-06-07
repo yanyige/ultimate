@@ -6,12 +6,15 @@ block content
 	.container
 		.row
 			.col-md-6 
-				a.btn.btn-default.bigButton(href='/guest/blog/list/') 查看文章
+				a.btn.btn-default.bigButton(href='/guest/blog/list') 查看文章
 			.col-md-6
 				a.btn.btn-default.bigButton(href='/admin/blog/new') 发表文章
 			each item in category
 				.col-md-6
 					a.btn.btn-default.bigButton(href='/guest/blog/list/#{item._id}') #{item.name}
-		.row
-			.col-md-6
-				a.btn.btn-default.bigButton(href='/guest/blog/list/') 查看文章
+		if(user && user.role > 10)
+			form.form-inline(action="/category/new" method="post")
+				.form-group
+					label.col-md-12.control-label(for="categoryName")
+					input.col-md-6.form-control(type="text" name='category[name]' id="categoryName" placeholder="category")
+				input.btn.btn-default.form-control(type="submit")
