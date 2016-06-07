@@ -6,7 +6,7 @@ block head
 	script(type="text/javascript" charset="utf-8" src="/libs/ueditor/lang/zh-cn/zh-cn.js")
 block content
 	.container
-		form.form-horizontal(action="/blog/new" method="post" enctype="multipart/form-data")
+		form.form-horizontal(action="/blog/new" method="post")
 			if article._id
 				input(type="hidden" value=article._id name='article[_id]')
 			.form-group
@@ -20,7 +20,9 @@ block content
 			.form-group
 				label.col-md-3.col-md-offset-3.control-label(for="category") 类别
 				.col-md-3
-					input.col-md-3.form-control(type="text" name='article[category]' id="category" placeholder="category")
+					select#onTop.form-control(name="article[category]")
+						each item in category
+							option(value='#{item._id}') #{item.name}
 			.form-group
 				label.col-md-3.col-md-offset-3.control-label(for="onTop") 是否置顶
 				.col-md-3

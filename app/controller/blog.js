@@ -17,42 +17,58 @@ exports.index = function(req, res){
 
 }
 
-exports.list = function(req, res){
-	Article.fetch(function(err, articles){
-		if(err){
-			console.log(err);
-		}
-		res.render('articleList', {
-			article: articles,
-			title: '文章列表'
-		});
-	});
-}
-
 exports.listById = function(req, res){
 	var _categoryId = req.params.categoryId;
-	console.log(_categoryId);
-	Article.findByCategory(_categoryId, function(err, articles){
-		if(err){
-			console.log(err);
-		}
-		res.render('articleList', {
-			article: articles,
-			title: '文章列表'
-		});
-	});
+	// console.log('_categoryId:');
+	// console.log(_categoryId);
+	if(_categoryId){	
+		// Article.findByCategory(_categoryId, function(err, articles){
+		// 	if(err){
+		// 		console.log(err);
+		// 	}
+		// 	res.render('articleList', {
+		// 		article: articles,
+		// 		title: '文章列表'
+		// 	});
+		// });
+		Article.find({category: _categoryId})
+			   .populate('category', 'name')
+			   .exec(function(err , articles){
+					if(err){
+						console.log(err);
+					}
+					res.render('articleList', {
+						article: articles,
+						title: '文章列表'
+					});
+				});
+	}else{
+		Article.find({})
+			   .populate('category', 'name')
+			   .exec(function(err , articles){
+					if(err){
+						console.log(err);
+					}
+					res.render('articleList', {
+						article: articles,
+						title: '文章列表'
+					});
+				});
+	}
 }
 
 exports.new = function(req, res){
-	res.render('articleNew', {
-		title: '发表文章',
-		article: {}
+	Category.fetch(function(err, categories){
+		res.render('articleNew', {
+			title: '发表文章',
+			article: {},
+			category: categories
+		});
 	});
 }
 
 exports.save = function(req, res){
 	var _article = req.body.article;
-	console.log(_article);
 	var article = new Article(_article);
 	article.save(function(err, article){
 		if(err) {
@@ -65,7 +81,6 @@ exports.save = function(req, res){
 
 exports.detail = function(req, res){
 	var _id = req.params['id'];
-	// _id = _id.slice(1);
 	Article.findById(_id, function(err, article){
 		if(err){
 			console.log(err);

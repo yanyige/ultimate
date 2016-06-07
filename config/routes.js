@@ -30,7 +30,7 @@ module.exports = function(app){
 
 	//博客登陆路由
 	app.get('/blog', Blog.index);
-	app.get('/guest/blog/list', Blog.list);
+	app.get('/guest/blog/list/', Blog.listById);
 	app.get('/guest/blog/list/:categoryId', Blog.listById); //此处id为类别id
 	app.get('/admin/blog/new', User.userLoginRequired, User.userAdminRequired, Blog.new);
 	app.get('/guest/blog/:id', Blog.detail);

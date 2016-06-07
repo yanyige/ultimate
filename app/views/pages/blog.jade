@@ -6,9 +6,12 @@ block content
 	.container
 		.row
 			.col-md-6 
-				a.btn.btn-default.bigButton(href='/guest/blog/list') 查看文章
+				a.btn.btn-default.bigButton(href='/guest/blog/list/') 查看文章
 			.col-md-6
 				a.btn.btn-default.bigButton(href='/admin/blog/new') 发表文章
 			each item in category
 				.col-md-6
 					a.btn.btn-default.bigButton(href='/guest/blog/list/#{item._id}') #{item.name}
+		.row
+			.col-md-6
+				a.btn.btn-default.bigButton(href='/guest/blog/list/') 查看文章

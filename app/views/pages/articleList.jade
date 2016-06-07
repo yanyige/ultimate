@@ -17,6 +17,6 @@ block content
 						tr(class="item-id-#{item._id}")
 							td: a(href='/guest/blog/#{item._id}') #{item.title}
 							td #{item.author}
-							td #{item.category}
+							td #{item.category.name}
 							td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
 							td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
