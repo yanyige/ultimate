@@ -19,18 +19,7 @@ exports.index = function(req, res){
 
 exports.listById = function(req, res){
 	var _categoryId = req.params.categoryId;
-	// console.log('_categoryId:');
-	// console.log(_categoryId);
 	if(_categoryId){	
-		// Article.findByCategory(_categoryId, function(err, articles){
-		// 	if(err){
-		// 		console.log(err);
-		// 	}
-		// 	res.render('articleList', {
-		// 		article: articles,
-		// 		title: '文章列表'
-		// 	});
-		// });
 		Article.find({category: _categoryId})
 			   .populate('category', 'name')
 			   .exec(function(err , articles){
