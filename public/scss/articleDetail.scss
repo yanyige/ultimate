@@ -1,0 +1,51 @@
+.myArticle{
+	
+}
+
+.content{
+	margin: 0 auto;
+	width: 960px;
+	border: #FC9 1px solid;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+.content hr{
+	// margin: 0px 15px 0px 15px;
+	margin: 0;
+}
+
+.title{
+    font-family: 'Microsoft YaHei',Verdana,Arial,Helvetica,sans-serif;
+    line-height: 28px;
+    padding-bottom: 8px;
+    font-size: 21px;
+    color: #0066cc;
+    font-weight: normal;
+    text-align: center;
+}
+
+.subTitle{
+	text-align: center;
+    font-size: 13px;
+    color: #787878;
+    font-family: 'Microsoft YaHei';
+}
+
+.contentBar{
+	position: fixed;
+	right: 0;
+	top: 300px;
+	width: 15px;
+	background-color: #f5f5f5;
+	padding: 15px;
+	font-weight: bold;
+	height: 111px;
+}
+
+.detail-content{
+	position: relative;
+	width: 200px;
+	margin-left: -200px;
+	margin-top: -100px;
+}

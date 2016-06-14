@@ -74,10 +74,13 @@ exports.detail = function(req, res){
 		if(err){
 			console.log(err);
 		}else{
+			console.log(article);
 			res.render('articleDetail',{
 				title: '文章详情',
 				article: article
 			})
+
+
 		}
 	});
 }

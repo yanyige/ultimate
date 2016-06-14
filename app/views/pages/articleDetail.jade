@@ -1,5 +1,16 @@
 extends ../layout
+block head
+	title #{title}
+	link(rel="stylesheet", href="/css/articleDetail.css")
+	script(type="text/javascript" src="/js/articleDetail.js")
 block content
-	.title #{article.title}
-	.content !{article.content}
-	.author #{article.author}
+	.wrapper
+		.content
+			.title #{article.title}
+			hr
+			.subTitle #{moment(article.meta.updateAt).format("YYYY/MM/DD, h:mm:ss a")}
+			.myArticle
+				.article-content !{article.content}
+				.author #{article.author}
+	.contentBar 目录摘要
+		.detail-content
